@@ -889,6 +889,7 @@
 	name = "wooden chair"
 	desc = "It wooden chair."
 	icon_state = "wooden_chair"
+<<<<<<< HEAD
 	anchored = 0
 
 /obj/structure/stool/bed/chair/wooden_chair_wings
@@ -901,6 +902,9 @@
 	name = "chapell chair"
 	desc = "Its chapell chair."
 	icon_state = "capchair"
+=======
+	anchored = 1
+>>>>>>> 81be6ed8a720cbcfc777d120c73ec499e3233772
 
 /obj/structure/stool/bed/chair/comfy
 	name = "comfy chair"

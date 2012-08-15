@@ -6,17 +6,20 @@
 	var/on = 0
 	var/error = 0
 	var/speed = 0
+	var/list/lights = new
 	New()
 		sleep(30)
-		for(var/obj/effect/overlay/bluelight/T in world)
-			T.icon_state = "invi"
-		for(var/obj/effect/overlay/bluelight/T in world)
-			if(T.icon_state == "lightblue")
-				T.icon_state = "invi"
-				if(!error)
-					sleep(900)
-					message_admins("ERROR: Bluelight overlays have bug, please, report to coders.")
-					error = 1
+		for(var/turf/T in src.loc.loc:master:contents)
+			var/obj/effect/overlay/bluelight/BL = new /obj/effect/overlay/bluelight(src.loc)
+			BL.icon_state = "invi"
+
+//		for(var/obj/effect/overlay/bluelight/T in world)
+//			if(T.icon_state == "lightblue")
+//				T.icon_state = "invi"
+//				if(!error)
+//					sleep(900)
+//					message_admins("ERROR: Bluelight overlays have bug, please, report to coders.")
+//					error = 1
 
 /obj/machinery/club/lightmusic/attack_hand()
 	var/dat = {"<B> Valve properties: </B>
@@ -67,26 +70,9 @@
 		return
 	return
 
-/turf/simulated/floor/clubfloor
-	icon_state = "bcircuitoff"
-	New()
-		if(prob(10))
-			overlays << image (icon = 'structures.dmi', icon_state = "latticefull")
-
-/obj/machinery/club/player
-	name = "Player"
-	desc = "."
-	icon = 'device.dmi'
-	icon_state = "locator"
-	var/playing_track = "Space Assgole.wma"
-
-
 /obj/effect/overlay/bluelight
 	icon = 'alert.dmi'
 	icon_state = "lightblue"
 	mouse_opacity = 0
 	layer = 10
 	anchored = 1
-	var/turf
-	New()
-		turf = src.loc
