@@ -28,24 +28,21 @@ var/elevator_moving = 0
 	src.add_fingerprint(usr)
 	if(href_list["move1"])
 		if (!elevator_moving)
-			usr << "\blue Rover recieved message and will be sent."
 			move_elevator(1)
+			//sound placeholder
 		else
-			usr << "\blue Rover is already moving."
 
 	if(href_list["move2"])
 		if (!elevator_moving)
-			usr << "\blue Rover recieved message and will be sent."
-			move_elevator()
+			move_elevator(2)
+			//sound placeholder
 		else
-			usr << "\blue Rover is already moving."
 
 	if(href_list["move3"])
 		if (!elevator_moving)
-			usr << "\blue Rover recieved message and will be sent."
-			move_elevator()
+			move_elevator(3)
+			//sound placeholder
 		else
-			usr << "\blue Rover is already moving."
 
 proc/move_elevator(var/lvl)
 	if (elevator_moving)
@@ -91,6 +88,7 @@ proc/move_elevator(var/lvl)
 						shake_camera(M, 1, 1)
 					else
 						shake_camera(M, 2, 1)
+					//sound placeholder
 		T += 1
 	fromArea.move_contents_to(toArea)
 	elevator_location = lvl
