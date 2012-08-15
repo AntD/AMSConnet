@@ -150,8 +150,8 @@
 	temperature = T20C + 280
 	New()
 		icon_state = "asteroid[rand(0,12)]"
-		if(day)
-			overlays += image('alert.dmi', "day")
+//		if(day)
+//			overlays += image('alert.dmi', "day")
 //		sleep(10)
 //		luminosity = 7
 //		LuminosityBlue = 7

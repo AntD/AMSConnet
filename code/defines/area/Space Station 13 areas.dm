@@ -319,9 +319,6 @@ proc/process_ghost_teleport_locs()
 /area/mars_station/security/detectives_office
 	name = "\improper Detective's Office"
 	icon_state = "detective"
-	Entered()
-		if(prob(1))
-			usr << sound('Intro.wma', volume=5)
 
 /area/mars_station/security/nuke_storage
 	name = "\improper Vault"
@@ -398,10 +395,13 @@ proc/process_ghost_teleport_locs()
 				Obj << mysound
 
 ///TRANSPORT
-/area/mars_station/elevator/labs
+/area/mars_station/elevator/layer3
+	icon_state = "shuttle3"
+
+/area/mars_station/elevator/layer2
 	icon_state = "shuttle2"
 
-/area/mars_station/elevator/station
+/area/mars_station/elevator/layer1
 	icon_state = "shuttle"
 
 /area/mars_station/elevator/moving
@@ -1463,11 +1463,7 @@ proc/process_ghost_teleport_locs()
 /area/security/detectives_office
 	name = "\improper Detective's Office"
 	icon_state = "detective"
-	Entered()
-		if(prob(1))
-			usr << sound('Intro.wma', volume=5)
-//		if(prob(0.5))
-//			T << sound('Intro.wma', volume=10)
+
 /area/security/range
 	name = "\improper Firing Range"
 	icon_state = "firingrange"
