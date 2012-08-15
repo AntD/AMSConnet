@@ -120,8 +120,296 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Admin room"
 	icon_state = "start"
 
+/area/mars
+/*	Entered(T)
+		if(!istype(T, /mob/living))
+			return
+		if(istype(T, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = T
+			if(H.wear_suit.flags & SUITSPACE && H.head.flags & HEADSPACE)
+				return
+			else if(H.wear_suit.flags & !SUITSPACE)
+				H.apply_damage(2, BURN, "chest")
+			if(H.head.flags & !HEADSPACE)
+				H.apply_damage(1, BURN, "head")
+			return
+		T:apply_damage(1, BURN, "head")
+		T:apply_damage(3, BURN, "chest")
+		return
+	*/
+	ul_Lighting = 0
+	New()
+		always_unpowered = 0
+		icon_state = "invi"
+
+///SUPPORT
+/area/mars_station/support/mining
+	name = "\improper Mining Dock"
+	icon_state = "mining"
+
+//COMMAND
+/area/mars_station/command/bridge
+	name = "\improper Bridge"
+	icon_state = "bridge"
+
+//MAINT
+/area/mars_station/maintenance/south
+	name = "\improper South Maintenance"
+	icon_state = "asmaint"
+
+/area/mars_station/maintenance/north_east
+	name = "\improper North-East Maintenance"
+	icon_state = "amaint"
+
+/area/mars_station/maintenance/south_solar
+	name = "\improper South Solar Array"
+	icon_state = "panelsA"
+
+/area/mars_station/maintenance/north_west
+	name = "North West Maintenance"
+	icon_state = "fmaint"
+
+/area/mars_station/maintenance/engineering
+	name = "Engineering Maintenance"
+	icon_state = "fpmaint"
+
+///HQ
+/area/mars_station/HQ
+	name = "\improper Head Quarter's"
+	icon_state = "head_quarters"
+	requires_power = 0
+	ul_Lighting = 0
+
+/area/mars_station/HQ/arrival
+	name = "\improper Arrival"
+	icon_state = "entry"
+
+///MEDICAL
+/area/mars_station/medical
+	name = "\improper Medbay"
+	icon_state = "medbay"
+
+/area/mars_station/medical/rest_room
+	name = "\improper Rest room"
+	icon_state = "patients"
+
+/area/mars_station/medical/cmo
+	name = "\improper Chief Medical Officer's office"
+	icon_state = "CMO"
+
+/area/mars_station/medical/chemistry
+	name = "Chemistry"
+	icon_state = "chem"
+
+/area/mars_station/medical/morgue
+	name = "\improper Morgue"
+	icon_state = "morgue"
+
+/area/mars_station/medical/surgery
+	name = "Surgery"
+	icon_state = "surgery"
+
+/area/mars_station/medical/genetics
+	name = "Genetics"
+	icon_state = "genetics"
+
+/area/mars_station/medical/sleeper
+	name = "\improper Medical Sleepers Room"
+	icon_state = "medbay"
+
+/area/mars_station/medical/hall
+	name = "\improper Medbay Hall"
+	icon_state = "medbay"
+///ENGINEERING
+/area/mars_station/engine
+	engine_smes
+		name = "\improper Engineering SMES"
+		icon_state = "engine_smes"
+		requires_power = 0//This area only covers the batteries and they deal with their own power
+
+	engineering
+		name = "Engineering"
+		icon_state = "engine"
+
+//	engineering_break_room
+//		name = "\improper Engineering Break Room"
+//		icon_state = "engine_breakroom"
+
+//	chiefs_office
+//		name = "\improper Chief Engineer's office"
+//		icon_state = "engine_ce"
+
+//	particle_accelerator
+//		name = "\improper Particle Accelerator"
+//		icon_state = "engine_pa"
+
+//	control
+//		name = "\improper Engineering Control"
+//		icon_state = "engine_control"
+
+//	port
+//		name = "Engineering Port"
+//		icon_state = "engine_port"
+
+//	starboard
+//		name = "Engineering Starboard"
+//		icon_state = "engine_starboard"
+
+//	fore
+//		name = "Engineering Fore"
+//		icon_state = "engine_fore"
+
+//	aft
+//		name = "Engineering Aft"
+//		icon_state = "engine_aft"
+
+	locker
+		name = "\improper Engineering Locker Room"
+		icon_state = "engine_locker"
+
+//	construction_storage
+//		name = "Engineering Construction Storage"
+//		icon_state = "engine_construction"
+
+//	atmos_storage
+//		name = "Engineering Atmos Storage"
+//		icon_state = "engine_atmos"
+
+//	electrical_storage
+//		name = "Engineering Electrical Storage"
+//		icon_state = "engine_electrical"
+
+//	secure_storage
+//		name = "Engineering Secure Storage"
+//		icon_state = "engine_secure"
+
+//	foyer
+//		name = "\improper Engineering Foyer"
+//		icon_state = "engine_foyer"
+
+	core
+		name = "\improper Engineering Core"
+		icon_state = "engine_core"
+
+//	cooling
+//		name = "\improper Emergency Cooling Room"
+//		icon_state = "engine"
+
+///SECURITY
+/area/mars_station/security/main
+	name = "\improper Security Office"
+	icon_state = "security"
+
+/area/mars_station/security/brig
+	name = "\improper Brig"
+	icon_state = "brig"
+
+/area/mars_station/security/warden
+	name = "\improper Warden"
+	icon_state = "Warden"
+
+/area/mars_station/security/armoury
+	name = "\improper Armoury"
+	icon_state = "Warden"
+
+/area/mars_station/security/hos
+	name = "\improper Head of Security's Office"
+	icon_state = "security"
+
+/area/mars_station/security/detectives_office
+	name = "\improper Detective's Office"
+	icon_state = "detective"
+	Entered()
+		if(prob(1))
+			usr << sound('Intro.wma', volume=5)
+
+/area/mars_station/security/nuke_storage
+	name = "\improper Vault"
+	icon_state = "nuke_storage"
+
+/area/mars_station/security/checkpoint
+	name = "\improper Security Checkpoint"
+	icon_state = "checkpoint1"
+
+/area/mars_station/security/checkpoint2
+	name = "\improper Security Checkpoint"
+	icon_state = "security"
+
+/area/mars_station/security/lawoffice
+	name = "\improper Law Office"
+	icon_state = "law"
+
+///CREW
+/area/mars_station/arrival
+	name = "\improper Mars Arrival"
+	icon_state = "entry"
+
+/area/mars_station/crew/central_hall
+	name = "\improper Central Primary Hallway"
+	icon_state = "hallC"
+
+/area/mars_station/crew/cafeteria
+	name = "\improper Cafeteria"
+	icon_state = "cafeteria"
+
+/area/mars_station/crew/arrival
+	name = "\improper Mars Arrival"
+	icon_state = "entry"
+
+/area/mars_station/crew/hydroponics
+	name = "Hydroponics"
+	icon_state = "hydro"
+
+/area/mars_station/crew/bar
+	name = "Station Bar"
+	icon_state = "bar"
+	var/sound/mysound = null
+
+	New()
+		..()
+		var/sound/S = new/sound()
+		mysound = S
+		S.file = 'shore.ogg'
+		S.repeat = 1
+		S.wait = 0
+		S.channel = 123
+		S.volume = 100
+		S.priority = 255
+		S.status = SOUND_UPDATE
+//		process()
+		var/player = null
+		for(var/obj/machinery/M in src)
+			if(istype(M, /obj/machinery/club/player))
+				player = M
+				S.file = player:playing_track
+				return
+
+	Entered(atom/movable/Obj,atom/OldLoc)
+		if(ismob(Obj))
+			if(Obj:client)
+				mysound.status = SOUND_UPDATE
+				Obj << mysound
+		return
+
+	Exited(atom/movable/Obj)
+		if(ismob(Obj))
+			if(Obj:client)
+				mysound.status = SOUND_PAUSED | SOUND_UPDATE
+				Obj << mysound
+
+///TRANSPORT
+/area/mars_station/elevator/labs
+	icon_state = "shuttle2"
+
+/area/mars_station/elevator/station
+	icon_state = "shuttle"
+
+/area/mars_station/elevator/moving
+	icon_state = "shuttle3"
 
 
+
+////////////////////////////////////////////////////////
 //These are shuttle areas, they must contain two areas in a subgroup if you want to move a shuttle from one
 //place to another. Look at escape shuttle for example.
 //All shuttles show now be under shuttle since we have smooth-wall code.
@@ -139,6 +427,9 @@ proc/process_ghost_teleport_locs()
 
 /area/shuttle/arrival/station
 	icon_state = "shuttle"
+
+/area/shuttle/arrival/spess
+	icon_state = "shuttle3"
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
@@ -246,6 +537,14 @@ proc/process_ghost_teleport_locs()
 	luminosity = 1
 	ul_Lighting = 0
 
+/area/shuttle/deportationsputnik
+	icon_state = "shuttle2"
+	name = "\improper Sathelitte Deportation Shuttle"
+
+/area/shuttle/deportationcosmoc
+	icon_state = "shuttle"
+	name = "\improper Space Deportation Shuttle"
+
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
@@ -343,6 +642,9 @@ proc/process_ghost_teleport_locs()
 
 /area/centcom/control
 	name = "\improper Centcom Control"
+
+/area/centcom/arrival
+	name = "\improper Centcom Arrival Shuttle"
 
 /area/centcom/evac
 	name = "\improper Centcom Emergency Shuttle"
@@ -594,6 +896,10 @@ proc/process_ghost_teleport_locs()
  	name = "Atmospherics"
  	icon_state = "atmos"
 
+/area/bioresearching
+	name = "Destroyed Lab"
+	icon_state = "fpmaint"
+
 /area/atmos/refilling
  	name = "\improper Refilling Station"
  	icon_state = "atmos"
@@ -619,6 +925,10 @@ proc/process_ghost_teleport_locs()
 /area/maintenance/fsmaint2
 	name = "Bar Maintenance"
 	icon_state = "fsmaint"
+
+/area/maintenance/fsmaint3
+	name = "Social Mainteance"
+	icon_state = "fmaint"
 
 /area/maintenance/asmaint
 	name = "Library Maintenance"
@@ -807,6 +1117,10 @@ proc/process_ghost_teleport_locs()
 /area/chapel/main
 	name = "\improper Chapel"
 	icon_state = "chapel"
+
+/area/security/internal
+	name = "Internal Security"
+	icon_state = "security"
 
 /area/chapel/office
 	name = "\improper Chapel Office"
@@ -1135,7 +1449,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "security"
 
 /area/security/warden
-	name = "\improper Warden's Office"
+	name = "\improper Warden"
 	icon_state = "Warden"
 
 /area/security/armoury
@@ -1149,7 +1463,11 @@ proc/process_ghost_teleport_locs()
 /area/security/detectives_office
 	name = "\improper Detective's Office"
 	icon_state = "detective"
-
+	Entered()
+		if(prob(1))
+			usr << sound('Intro.wma', volume=5)
+//		if(prob(0.5))
+//			T << sound('Intro.wma', volume=10)
 /area/security/range
 	name = "\improper Firing Range"
 	icon_state = "firingrange"
@@ -1280,6 +1598,22 @@ proc/process_ghost_teleport_locs()
 /area/toxins/supermatter
 	name = "\improper Supermatter Laboratory"
 	icon_state = "supermatter"
+
+/area/toxins/supermatter/engine
+	name = "\improper Supermatter Engine"
+	icon_state = "supa_engine"
+
+/area/toxins/supermatter/turbine
+	name = "\improper Supermatter Engine Power Generator"
+	icon_state = "supa_turbine"
+
+/area/toxins/supermatter/hallway
+	name = "\improper Supermatter Engine Hallway"
+	icon_state = "supa_hallway"
+
+/area/toxins/anomaly
+	name = "\improper Anomalistic Laboratory"
+	icon_state = "ano_lab"
 
 //Anomaly
 

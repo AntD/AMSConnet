@@ -1,6 +1,6 @@
 world
 	mob = /mob/new_player
-	turf = /turf/space
+	turf = /turf/simulated/mars
 	area = /area
 	view = "15x15"
 

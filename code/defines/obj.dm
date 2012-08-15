@@ -544,6 +544,7 @@
 	throw_range = 15
 	throw_speed = 3
 	desc = "An item of dubious origins, with wires and antennas protruding out of it."
+	origin_tech = "magnets=2;engineering=3;syndicate=2"
 	m_amt = 60
 	g_amt = 20
 
@@ -594,7 +595,7 @@
 
 /obj/structure/lattice/New()
 	..()
-	if(!(istype(src.loc, /turf/space)))
+	if(!(istype(src.loc, /turf/space)) || !(istype(src.loc, /turf/simulated/mars)))
 		del(src)
 	for(var/obj/structure/lattice/LAT in src.loc)
 		if(LAT != src)
@@ -866,12 +867,40 @@
 	desc = "This looks similar to contraptions from earth. Could aliens be stealing our technology?"
 	icon_state = "abed"
 
+/obj/structure/stool/bed/woodbed
+	name = "wooden bed"
+	desc = "This is used to lie in, sleep in or strap on"
+	icon_state = "woodbed"
+
 
 /obj/structure/stool/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "chair"
 	anchored = 0
+
+/obj/structure/stool/bed/chair/schair
+	name = "shuttle chair"
+	desc = "It shuttle chair."
+	icon_state = "schair"
+	anchored = 1
+
+/obj/structure/stool/bed/chair/wooden_chair
+	name = "wooden chair"
+	desc = "It wooden chair."
+	icon_state = "wooden_chair"
+	anchored = 0
+
+/obj/structure/stool/bed/chair/wooden_chair_wings
+	name = "wooden chair with wings"
+	desc = "It wooden chair with wings."
+	icon_state = "wooden_chair_wings"
+	anchored = 0
+
+/obj/structure/stool/bed/chair/capchair
+	name = "chapell chair"
+	desc = "Its chapell chair."
+	icon_state = "capchair"
 
 /obj/structure/stool/bed/chair/comfy
 	name = "comfy chair"
@@ -1126,6 +1155,24 @@
 	icon_state = "reinf_table"
 	var/status = 2
 
+/obj/structure/altar/
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-1"
+	var/status = 2
+
+/obj/structure/altar/reinforced
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-1"
+	status = 2
+
+/obj/structure/altar/woodentable
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-1"
+	status = 2
+
 /obj/structure/table/woodentable
 	name = "wooden table"
 	desc = "Do not apply fire to this. Rumour says it burns easily."
@@ -1377,6 +1424,7 @@
 	desc = "Some rods. Can be used for building."
 	singular_name = "metal rod"
 	icon_state = "rods"
+	item_state = "rods"
 	flags = FPRINT | TABLEPASS| CONDUCT
 	w_class = 3.0
 	force = 9.0
@@ -1405,6 +1453,7 @@
 	desc = "One can only guess that this is a bunch of wood."
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
+	item_state = "sheet-wood"
 	origin_tech = "materials=1;biotech=1"
 
 /obj/item/stack/sheet/sandstone
@@ -1412,6 +1461,7 @@
 	desc = "This appears to be a combination of both sand and stone."
 	singular_name = "sandstone brick"
 	icon_state = "sheet-sandstone"
+	item_state = "sheet-sandstone"
 	throw_speed = 4
 	throw_range = 5
 	origin_tech = "materials=1"
@@ -1421,6 +1471,7 @@
 	desc = "That is a lot of glass."
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
+	item_state = "sheet-glass"
 	g_amt = 3750
 	origin_tech = "materials=1"
 
@@ -1430,6 +1481,7 @@
 	desc = "Glass which seems to have rods or something stuck in them."
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
+	item_state = "sheet-rglass"
 	g_amt = 3750
 	m_amt = 1875
 	origin_tech = "materials=2"
@@ -1439,6 +1491,7 @@
 	desc = "Glass which seems to have rods or something stuck in them."
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
+	item_state = "sheet-rglass"
 	g_amt = 0
 	m_amt = 0
 
@@ -1448,6 +1501,7 @@
 	desc = "Sheets made out off metal. It has been dubbed Metal Sheets."
 	singular_name = "metal sheet"
 	icon_state = "sheet-metal"
+	item_state = "sheet-metal"
 	m_amt = 3750
 	throwforce = 14.0
 	flags = FPRINT | TABLEPASS | CONDUCT
@@ -1458,6 +1512,7 @@
 	desc = "Sheets made out off metal. It has been dubbed Metal Sheets."
 	singular_name = "metal sheet"
 	icon_state = "sheet-metal"
+	item_state = "sheet-metal"
 	m_amt = 0
 	throwforce = 14.0
 	flags = FPRINT | TABLEPASS | CONDUCT
@@ -1478,6 +1533,7 @@
 	singular_name = "floor tile"
 	desc = "Those could work as a pretty decent throwing weapon"
 	icon_state = "tile"
+	item_state = "tile"
 	w_class = 3.0
 	force = 6.0
 	m_amt = 937.5
@@ -1492,6 +1548,7 @@
 	singular_name = "grass floor tile"
 	desc = "A patch of grass like they often use on golf courses"
 	icon_state = "tile_grass"
+	item_state = "tile_grass"
 	w_class = 3.0
 	force = 1.0
 	throwforce = 1.0
@@ -1506,6 +1563,7 @@
 	singular_name = "wired glass floor tile"
 	desc = "A glass tile, which is wired, somehow."
 	icon_state = "glass_wire"
+	item_state = "glass_wire"
 	w_class = 3.0
 	force = 3.0
 	throwforce = 5.0

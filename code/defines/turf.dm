@@ -14,7 +14,7 @@
 
 		//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
-	var/heat_capacity = 200
+	var/heat_capacity = 1
 
 		//Properties for both
 	var/temperature = T20C
@@ -140,6 +140,23 @@
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 
+/turf/simulated/mars
+	name = "Ground"
+	icon_state = "asteroid"
+	oxygen = 0.01
+	carbon_dioxide = 0.11
+	nitrogen = 0.01
+	toxins = 0
+	temperature = T20C + 280
+	New()
+		icon_state = "asteroid[rand(0,12)]"
+		if(day)
+			overlays += image('alert.dmi', "day")
+//		sleep(10)
+//		luminosity = 7
+//		LuminosityBlue = 7
+//		LuminosityGreen = 7
+//		LuminosityRed = 7
 
 
 /turf/simulated/wall/r_wall
@@ -215,6 +232,11 @@
 			desc = "A wall with sandstone plating."
 			icon_state = "sandstone0"
 			walltype = "sandstone"
+		if("wood")
+			name = "wood wall"
+			desc = "A wall with wood plating."
+			icon_state = "wood_wall_full_center"
+			walltype = "wood"
 	..()
 
 /turf/simulated/wall/mineral/proc/radiate()
@@ -288,11 +310,6 @@
 	name = "floor"
 	icon = 'floors.dmi'
 	icon_state = "Floor3"
-
-/turf/unsimulated/floor/deadly
-	oxygen = MOLES_O2STANDARD/10
-	nitrogen = MOLES_N2STANDARD/5
-	temperature = TCMB
 
 /turf/unsimulated/wall
 	name = "wall"
@@ -437,3 +454,10 @@
 			hardness -= toxinsToDeduce/100
 			CheckHardness()
 */
+
+/turf/unsimulated/floor/mars
+	name = "Ground"
+	desc = "Dust and stone's...Everywhere..."
+	icon_state = "asteroid"
+	New()
+		icon_state = "asteroid[rand(0,12)]"
